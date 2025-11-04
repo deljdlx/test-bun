@@ -1,8 +1,8 @@
 // Simple serveur HTTP avec Bun
 const server = Bun.serve({
-  port: 3000,
+  port: 3333,
   fetch(_req) {
-    return new Response("Hello World !!!  🌍", {
+    return new Response("Hello World yolo  🌍", {
       headers: {
         "Content-Type": "text/html; charset=utf-8",
       },

@@ -5,9 +5,9 @@ services:
       target: dev
     container_name: bun-dev
     volumes:
-      - .:/app
+      - ./app:/app
     ports:
-      - "3000:3000"
+      - "3333:3333"
     command: ["bun", "--watch", "server.ts"]
     restart: unless-stopped
 
