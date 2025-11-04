@@ -1,0 +1,21 @@
+services:
+  bun-dev:
+    build:
+      context: .
+      target: dev
+    container_name: bun-dev
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: ["bun", "--watch", "server.ts"]
+    restart: unless-stopped
+
+  bun-prod:
+    build:
+      context: .
+      target: prod
+    container_name: bun-prod
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
