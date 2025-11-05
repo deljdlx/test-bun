@@ -8,14 +8,6 @@ services:
       - ./app:/app
     ports:
       - "3333:3333"
-    command: ["bun", "--watch", "server.ts"]
+    # command: ["bun", "--watch", "server.ts"]
     restart: unless-stopped
 
-  bun-prod:
-    build:
-      context: .
-      target: prod
-    container_name: bun-prod
-    ports:
-      - "3001:3000"
-    restart: unless-stopped

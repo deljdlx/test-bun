@@ -10,16 +10,10 @@ ENV PATH="/root/.bun/bin:${PATH}"
 # ---- dev : pas de COPY, on montera le code en volume ----
 FROM base AS dev
 WORKDIR /app
-EXPOSE 3000
+EXPOSE 3333
 # surchargé par docker-compose (bun --watch), mais laisse un défaut correct
-CMD ["bun", "run", "server.ts"]
+# CMD ["bun", "run", "adonisjs/index.ts"]
 
-# ---- prod : on embarque le code dans l'image ----
-FROM base AS prod
-WORKDIR /app
-# Si tu as un package.json/bun.lockb, copie-les d’abord pour tirer parti du cache
-# COPY package.json bun.lockb* ./
-# RUN test -f package.json && bun install --no-save || true
-COPY . .
-EXPOSE 3000
-CMD ["bun", "run", "server.ts"]
+# infinite tail - keep container running
+CMD ["tail", "-f", "/dev/null"]
+
